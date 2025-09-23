@@ -30,29 +30,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const getCountries = async() => {
 
-        const url = "https://restcountries.com/v3.1/all";
+        const apiKey = 'sb1qj74dSiFbR08qkglbfcIOQ6I1AXcpqwi4nALH';
+        const url = `https://countryapi.io/api/all?apikey=${apiKey}`;
 
         countriesContainer.innerHTML = '<p class="text-center col-span-full"> Cargando los países...</p>';
 
-        try{
+        try {
+            
+            if (apiKey === 'TU_API_KEY'){
+                throw new Error("API Key de países no configurada.");
+            }
+
             const response = await fetch(url);
 
             if (!response.ok){
                 throw new Error("Error en la solicitud: ${response.status}");
             }
 
-            const countries = await response.json();
+            const data = await response.json();
 
             countriesContainer.innerHTML = '';
+            const countriesLista = Object.values(data);
 
-            countries.slice(0, 20).forEach(country => {
+            countriesLista.slice(0, 20).forEach(country => {
 
                 const countryCard = document.createElement('div');
                 countryCard.className = 'border rounded-lg p-4 shadow-md bg-white hover:shadow-xl transition-shadow duration-300';
 
-                const countryName = country.name.common;
-                const countryCapital = country.capital ? country.capital[0] : 'N/A';
-                const countryFlag = country.flags.svg;
+                const countryName = country.name;
+                const countryCapital = country.capital || 'N/A';
+                const countryFlag = country.flag.large;
 
                 countryCard.innerHTML = `
                     <img src="${countryFlag}" alt="Bandera de ${countryName}" class="w-full h-32 object-cover mb-2 rounded-md">
@@ -119,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
         try{
             
             if (apiKey === 'TU_API_KEY'){
-                throw new Error("API Key de RAWG no configurada.");
+                throw new Error("API Key de videojuegos no configurada.");
             }
             
             const response = await fetch(url);
