@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>InfoMovil</title>
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
@@ -38,28 +38,47 @@
     <header class="bg-blue-500 text-white p-4 text-center ">
     <nav>
         <a href="index.html">
-        <h1 class="text-white hover:text-gray-500">Esta son las API del taller</h1>
+        <h1 class="text-white hover:text-gray-500">Bienvenido a InfoMóvil</h1>
         </a>
     </nav> 
     </header>
 
-    <main class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 p-2 items-center justify-items-center lg:grid-rows-4 ">
-        <div class="border-cyan-900 border-4 rounded-full shadow-black bg-red-300 hover:bg-red-600 animate-transition duration-300">
-            <a href="https://pokeapi.co/docs/v2#pokemon-section">
-            <img src="public/pokeapi-api.png" alt="imgagen de pokeapi">
-            </a>
-        </div>
-         <div class="border-cyan-900 border-4 rounded-full shadow-black bg-red-300 hover:bg-red-600 animate-transition duration-300">
-            <img src="public/pokeapi-api.png" alt="imgagen de pokeapi">
-        </div>
-         <div class="border-cyan-900 border-4 rounded-full shadow-black bg-red-300 hover:bg-red-600 animate-transition duration-300">
-            <img src="public/pokeapi-api.png" alt="imgagen de pokeapi">
-        </div>
-         <div class="border-cyan-900 border-4 rounded-full shadow-black bg-red-300 hover:bg-red-600 animate-transition duration-300">
-            <img src="public/pokeapi-api.png" alt="imgagen de pokeapi">
-        </div>
+    <main class="p-4">
+        <section id="countries-section" class ="mb-8">
+            <h2 class="text-2xl font-bold mb-4">Países del Mundo</h2>
+            <div id="countries-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
 
-    </main>
+            </div>
+        
+        </section>
+
+        <section id="weather-section" class ="mb-8">
+            <h2 class="text-2xl font-bold mb-4">El Tiempo</h2>
+            <div id="weather-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+
+            </div>
+        
+        </section>
+
+        <section id="videogames-section" class ="mb-8">
+            <h2 class="text-2xl font-bold mb-4">Videojuegos</h2>
+            <div id="videogames-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+
+            </div>
+        
+        </section>
+
+        <section id="football-section" class ="mb-8">
+            <h2 class="text-2xl font-bold mb-4">Fútbol</h2>
+            <div id="football-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+
+            </div>
+        
+        </section>
     
+        </main>
+    
+    <script src="apis.js"></script>
+
 </body>
 </html>
