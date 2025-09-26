@@ -1,4 +1,4 @@
-# Taller-1-Web-Movil
+-# Taller-1-Web-Movil
 Taller 1 de Desarrollo Web Móvil
 
 Grupo 8:
@@ -6,7 +6,7 @@ Grupo 8:
 Pablo Villarroel - 21.239.259-6
 Sebastián Pleticosic
 Diego Véliz
-Vicente Araya
+Vicente Araya - 20.797.409-9
 
 
 Ideas información dinámica:
