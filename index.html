@@ -12,7 +12,7 @@
 
     <header class="bg-blue-500 text-white p-4">
         <div class="container mx-auto">
-            <h1 class="text-center mb-4 cursor-pointer" onclick="showSection('home')">InfoMóvil</h1>
+            <h1 class="text-center mb-4 cursor-pointer" onclick="showSection('landing')">InfoMóvil</h1>
             <nav class="flex flex-wrap justify-center gap-4">
                 <button onclick="showSection('countries')" class="nav-btn bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors active">
                     Países
@@ -53,8 +53,86 @@
 
     <main class="container mx-auto p-4">
     <main class="container mx-auto p-4">
+        <!-- Landing Page -->
+        <div id="landing-view" class="view active">
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="hero-content">
+                    <h1 class="hero-title">InfoMóvil</h1>
+                    <p class="hero-subtitle">Tu fuente de información dinámica en un solo lugar</p>
+                    <p class="hero-description">
+                        Descubre datos actualizados sobre países, clima, videojuegos y fútbol. 
+                        Una aplicación web moderna diseñada para dispositivos móviles.
+                    </p>
+                    <button onclick="showSection('home')" class="cta-button">
+                        Explorar Contenido
+                    </button>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="features-section">
+                <h2 class="section-title">¿Qué puedes encontrar?</h2>
+                <div class="features-grid">
+                    <div class="feature-card" onclick="showSection('countries')">
+                        <div class="feature-icon">🌍</div>
+                        <h3 class="feature-title">Países del Mundo</h3>
+                        <p class="feature-description">
+                            Información detallada de países, capitales, banderas y datos demográficos.
+                        </p>
+                        <div class="feature-stats">250+ países</div>
+                    </div>
+
+                    <div class="feature-card" onclick="showSection('weather')">
+                        <div class="feature-icon">🌤️</div>
+                        <h3 class="feature-title">Información del Clima</h3>
+                        <p class="feature-description">
+                            Datos meteorológicos en tiempo real de ciudades chilenas.
+                        </p>
+                        <div class="feature-stats">Tiempo real</div>
+                    </div>
+
+                    <div class="feature-card" onclick="showSection('videogames')">
+                        <div class="feature-icon">🎮</div>
+                        <h3 class="feature-title">Videojuegos</h3>
+                        <p class="feature-description">
+                            Catálogo actualizado de videojuegos con ratings y información detallada.
+                        </p>
+                        <div class="feature-stats">Miles de juegos</div>
+                    </div>
+
+                    <div class="feature-card" onclick="showSection('football')">
+                        <div class="feature-icon">⚽</div>
+                        <h3 class="feature-title">Fútbol en Vivo</h3>
+                        <p class="feature-description">
+                            Partidos de fútbol en tiempo real con resultados y estadísticas.
+                        </p>
+                        <div class="feature-stats">En vivo</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section class="about-section">
+                <div class="about-content">
+                    <h2 class="section-title">Sobre InfoMóvil</h2>
+                    <p class="about-text">
+                        InfoMóvil es una aplicación web desarrollada con tecnologías modernas, 
+                        diseñada específicamente para dispositivos móviles. Utilizamos múltiples 
+                        APIs para brindarte información actualizada y confiable.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-item">HTML5</span>
+                        <span class="tech-item">CSS3</span>
+                        <span class="tech-item">JavaScript</span>
+                        <span class="tech-item">APIs REST</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
         <!-- Vista principal con todas las secciones -->
-        <div id="home-view" class="view active">
+        <div id="home-view" class="view">
             <section id="countries-section" class="mb-8">
                 <h2 class="text-2xl font-bold mb-4">Países del Mundo</h2>
                 <div id="countries-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>

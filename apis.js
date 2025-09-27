@@ -59,13 +59,24 @@ function showSection(section) {
         view.style.display = 'none';
     });
     
-    const targetView = document.getElementById(`${section}-view`) || document.getElementById('home-view');
-    targetView.style.display = 'block';
-    setTimeout(() => targetView.classList.add('active'), 50);
+    // Determinar qué vista mostrar
+    let targetView;
+    if (section === 'home') {
+        targetView = document.getElementById('home-view');
+    } else if (section === 'landing') {
+        targetView = document.getElementById('landing-view');
+    } else {
+        targetView = document.getElementById(`${section}-view`);
+    }
+    
+    if (targetView) {
+        targetView.style.display = 'block';
+        setTimeout(() => targetView.classList.add('active'), 50);
+    }
     
     // Mostrar/ocultar controles según la vista
     const controlsSection = document.getElementById('controls-section');
-    if (section === 'home') {
+    if (section === 'home' || section === 'landing') {
         controlsSection.classList.add('hidden');
     } else {
         controlsSection.classList.remove('hidden');
@@ -710,7 +721,7 @@ window.addEventListener('popstate', (event) => {
 
 // Inicialización
 document.addEventListener("DOMContentLoaded", () => {
-    // Cargar datos iniciales para la vista home
+    // Cargar datos iniciales para la vista home (en background)
     getCountries();
     getWeather();
     getVideogames();
@@ -718,9 +729,10 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // Manejar navegación inicial desde URL
     const hash = window.location.hash.slice(1);
-    if (hash && ['countries', 'weather', 'videogames', 'football'].includes(hash)) {
+    if (hash && ['countries', 'weather', 'videogames', 'football', 'home'].includes(hash)) {
         showSection(hash);
     } else {
-        showSection('home');
+        // Por defecto mostrar la landing page
+        showSection('landing');
     }
 });
