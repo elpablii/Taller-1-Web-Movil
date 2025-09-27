@@ -49,6 +49,13 @@ function showSection(section) {
     AppState.currentView = section;
     AppState.currentSection = section;
     
+    // Agregar/quitar clase landing-page al body
+    if (section === 'landing') {
+        document.body.classList.add('landing-page');
+    } else {
+        document.body.classList.remove('landing-page');
+    }
+    
     // Actualizar navegación activa
     document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
     document.querySelector(`button[onclick="showSection('${section}')"]`)?.classList.add('active');

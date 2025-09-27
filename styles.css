@@ -38,6 +38,20 @@ header h1 {
 
 /* ===== LANDING PAGE STYLES ===== */
 
+/* Ocultar navegación en landing page */
+body.landing-page nav {
+    display: none;
+}
+
+/* Ajustar header en landing page */
+body.landing-page header {
+    padding: 1rem;
+}
+
+body.landing-page header h1 {
+    margin-bottom: 0;
+}
+
 /* Hero Section - Mobile First */
 .hero-section {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
