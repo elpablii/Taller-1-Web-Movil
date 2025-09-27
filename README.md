@@ -5,7 +5,7 @@ Grupo 8:
 
 Pablo Villarroel - 21.239.259-6
 Sebastián Pleticosic
-Diego Véliz
+Diego Véliz 20.797.904-K
 Vicente Araya - 20.797.409-9
 
 
