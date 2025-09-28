@@ -63,6 +63,28 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
+        
+        @media (min-width: 640px) {
+            #countries-container, #weather-container, #videogames-container, #football-container,
+            #countries-full-container, #weather-full-container, #videogames-full-container, #football-full-container {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        
+        @media (min-width: 768px) {
+            #countries-container, #weather-container, #videogames-container, #football-container,
+            #countries-full-container, #weather-full-container, #videogames-full-container, #football-full-container {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            #countries-container, #weather-container, #videogames-container, #football-container,
+            #countries-full-container, #weather-full-container, #videogames-full-container, #football-full-container {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+        }
+
     </style>
 
 </head>
@@ -115,22 +137,22 @@
         <div id="home-view" class="view active">
             <section id="countries-section" class="mb-8">
                 <h2 class="text-2xl font-bold mb-4">Países del Mundo</h2>
-                <div id="countries-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+                <div id="countries-container" class="grid grid-cols-1 gap-4"></div>
             </section>
 
             <section id="weather-section" class="mb-8">
                 <h2 class="text-2xl font-bold mb-4">El Tiempo</h2>
-                <div id="weather-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+                <div id="weather-container" class="grid grid-cols-1 gap-4"></div>
             </section>
 
             <section id="videogames-section" class="mb-8">
                 <h2 class="text-2xl font-bold mb-4">Videojuegos</h2>
-                <div id="videogames-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+                <div id="videogames-container" class="grid grid-cols-1 gap-4"></div>
             </section>
 
             <section id="football-section" class="mb-8">
                 <h2 class="text-2xl font-bold mb-4">Fútbol</h2>
-                <div id="football-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+                <div id="football-container" class="grid grid-cols-1 gap-4"></div>
             </section>
         </div>
 
