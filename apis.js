@@ -1,4 +1,4 @@
-// Estado global de la aplicación
+
 const AppState = {
     currentView: 'home',
     currentSection: null,
@@ -24,7 +24,6 @@ const AppState = {
     }
 };
 
-// Configuración de APIs
 const API_CONFIG = {
     countries: {
         key: 'sb1qj74dSiFbR08qkglbfcIOQ6I1AXcpqwi4nALH',
@@ -49,6 +48,13 @@ function showSection(section) {
     AppState.currentView = section;
     AppState.currentSection = section;
     
+    // Agregar/quitar clase landing-page al body
+    if (section === 'landing') {
+        document.body.classList.add('landing-page');
+    } else {
+        document.body.classList.remove('landing-page');
+    }
+    
     // Actualizar navegación activa
     document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
     document.querySelector(`button[onclick="showSection('${section}')"]`)?.classList.add('active');
@@ -59,13 +65,22 @@ function showSection(section) {
         view.style.display = 'none';
     });
     
-    const targetView = document.getElementById(`${section}-view`) || document.getElementById('home-view');
-    targetView.style.display = 'block';
-    setTimeout(() => targetView.classList.add('active'), 50);
-    
-    // Mostrar/ocultar controles según la vista
-    const controlsSection = document.getElementById('controls-section');
+    let targetView;
     if (section === 'home') {
+        targetView = document.getElementById('home-view');
+    } else if (section === 'landing') {
+        targetView = document.getElementById('landing-view');
+    } else {
+        targetView = document.getElementById(`${section}-view`);
+    }
+    
+    if (targetView) {
+        targetView.style.display = 'block';
+        setTimeout(() => targetView.classList.add('active'), 50);
+    }
+    
+    const controlsSection = document.getElementById('controls-section');
+    if (section === 'home' || section === 'landing') {
         controlsSection.classList.add('hidden');
     } else {
         controlsSection.classList.remove('hidden');
@@ -73,11 +88,10 @@ function showSection(section) {
         loadSectionData(section);
     }
     
-    // Actualizar URL sin recargar
     window.history.pushState({section}, '', `#${section}`);
+    window.scrollTo(0, 0);
 }
 
-// Configurar controles de filtrado y ordenamiento
 function setupControls(section) {
     const sortSelect = document.getElementById('sort-select');
     const searchInput = document.getElementById('search-input');
@@ -107,7 +121,6 @@ function setupControls(section) {
         ]
     };
     
-    // Limpiar y rellenar opciones de ordenamiento
     sortSelect.innerHTML = '<option value="">Ordenar por...</option>';
     if (sortOptions[section]) {
         sortOptions[section].forEach(option => {
@@ -118,12 +131,10 @@ function setupControls(section) {
         });
     }
     
-    // Event listeners para filtros
     searchInput.oninput = () => filterAndSort(section);
     sortSelect.onchange = () => filterAndSort(section);
 }
 
-// Cargar datos de una sección específica
 async function loadSectionData(section) {
     if (AppState.data[section].length > 0) {
         AppState.filteredData[section] = [...AppState.data[section]];
@@ -157,7 +168,6 @@ async function loadSectionData(section) {
     }
 }
 
-// Funciones de API mejoradas
 const getCountries = async(fullLoad = false) => {
     const container = fullLoad ? 
         document.getElementById("countries-full-container") : 
@@ -204,8 +214,8 @@ const getWeather = async(fullLoad = false) => {
     container.innerHTML = '<p class="text-center col-span-full loading">Cargando clima...</p>';
 
     try {
-        // Para demo, obtenemos clima de varias ciudades
         const cities = ['Arica', 'Iquique', 'Antofagasta', 'Coquimbo', 'Valparaiso', 'Santiago', 'Concepción', 'Temuco'];
+
         const weatherPromises = cities.map(city => 
             fetch(`${API_CONFIG.weather.url}?q=${city}&appid=${API_CONFIG.weather.key}&units=metric&lang=es`)
                 .then(res => res.json())
@@ -304,7 +314,6 @@ const getFootball = async(fullLoad = false) => {
     }
 };
 
-// Funciones de renderizado
 function renderCountries(container, countries, fullLoad = false) {
     container.innerHTML = '';
     
@@ -429,7 +438,6 @@ function renderFootball(container, matches, fullLoad = false) {
     });
 }
 
-// Sistema de filtrado y ordenamiento
 function filterAndSort(section) {
     const searchTerm = document.getElementById('search-input').value.toLowerCase();
     const sortBy = document.getElementById('sort-select').value;
@@ -457,7 +465,6 @@ function filterAndSort(section) {
         });
     }
     
-    // Aplicar ordenamiento
     if (sortBy) {
         filteredData.sort((a, b) => {
             switch (sortBy) {
@@ -539,7 +546,6 @@ function clearFilters() {
     }
 }
 
-// Sistema de vista de detalle
 function showDetail(type, item) {
     AppState.currentView = 'detail';
     
@@ -552,7 +558,6 @@ function showDetail(type, item) {
     const detailView = document.getElementById('detail-view');
     const detailContent = document.getElementById('detail-content');
     
-    // Generar contenido de detalle según el tipo
     let detailHTML = '';
     
     switch (type) {
@@ -699,7 +704,6 @@ function goBack() {
     }
 }
 
-// Manejo de historial del navegador
 window.addEventListener('popstate', (event) => {
     if (event.state && event.state.section) {
         showSection(event.state.section);
@@ -710,17 +714,15 @@ window.addEventListener('popstate', (event) => {
 
 // Inicialización
 document.addEventListener("DOMContentLoaded", () => {
-    // Cargar datos iniciales para la vista home
     getCountries();
     getWeather();
     getVideogames();
     getFootball();
     
-    // Manejar navegación inicial desde URL
     const hash = window.location.hash.slice(1);
-    if (hash && ['countries', 'weather', 'videogames', 'football'].includes(hash)) {
+    if (hash && ['countries', 'weather', 'videogames', 'football', 'home'].includes(hash)) {
         showSection(hash);
     } else {
-        showSection('home');
+        showSection('landing');
     }
 });

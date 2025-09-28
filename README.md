@@ -4,13 +4,12 @@ Taller 1 de Desarrollo Web Móvil
 Grupo 8:
 
 Pablo Villarroel - 21.239.259-6
-Sebastián Pleticosic
+Sebastián Pleticosic - 19.307.465-0
 Diego Véliz - 20.797.904-K
 Vicente Araya - 20.797.409-9
 
 
-Ideas información dinámica:
-
+APIs usadas para el taller: 
 
 Datos de países (REST Countries)
 Clima (OpenWeatherMap)

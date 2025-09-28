@@ -5,94 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>InfoMovil</title>
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <style>
-        header h1 {
-            font-size: 1.25rem;
-        }
-        @media (min-width: 640px) {
-            header h1 {
-                font-size: 1.5rem;
-            }
-        }
-        @media (min-width: 768px) {
-            header h1 {
-                font-size: 2rem;
-            }
-        }
-        @media (min-width: 1024px) {
-            header h1 {
-                font-size: 2.5rem;
-            }
-        }
-        @media (min-width: 1280px) {
-            header h1 {
-                font-size: 3rem;
-            }
-        }
-        
-        .view {
-            display: none;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-        }
-        
-        .view.active {
-            display: block;
-            opacity: 1;
-        }
-        
-        .nav-btn.active {
-            background-color: #1e40af !important;
-        }
-        
-        .loading {
-            animation: pulse 1.5s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        
-        @media (min-width: 640px) {
-            #countries-container, #weather-container, #videogames-container, #football-container,
-            #countries-full-container, #weather-full-container, #videogames-full-container, #football-full-container {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-        }
-        
-        @media (min-width: 768px) {
-            #countries-container, #weather-container, #videogames-container, #football-container,
-            #countries-full-container, #weather-full-container, #videogames-full-container, #football-full-container {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            }
-        }
-        
-        @media (min-width: 1024px) {
-            #countries-container, #weather-container, #videogames-container, #football-container,
-            #countries-full-container, #weather-full-container, #videogames-full-container, #football-full-container {
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            }
-        }
-
-    </style>
-
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
     <header class="bg-blue-500 text-white p-4">
         <div class="container mx-auto">
-            <h1 class="text-center mb-4 cursor-pointer" onclick="showSection('home')">InfoMóvil</h1>
+            <h1 class="text-center mb-4 cursor-pointer" onclick="showSection('landing')">InfoMóvil</h1>
             <nav class="flex flex-wrap justify-center gap-4">
                 <button onclick="showSection('countries')" class="nav-btn bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors active">
                     Países
@@ -133,8 +52,81 @@
 
     <main class="container mx-auto p-4">
     <main class="container mx-auto p-4">
+        <!-- Landing Page -->
+        <div id="landing-view" class="view active">
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="hero-content">
+                    <h1 class="hero-title">InfoMóvil</h1>
+                    <p class="hero-subtitle">Tu fuente de información dinámica en un solo lugar</p>
+                    <p class="hero-description">
+                        Descubre datos actualizados sobre países, clima, videojuegos y fútbol. 
+                        Una aplicación web moderna diseñada para dispositivos móviles.
+                    </p>
+                </div>
+            </section>
+
+            <section class="features-section">
+                <h2 class="section-title">¿Qué puedes encontrar?</h2>
+                <div class="features-grid">
+                    <div class="feature-card" onclick="showSection('countries')">
+                        <div class="feature-icon">🌍</div>
+                        <h3 class="feature-title">Países del Mundo</h3>
+                        <p class="feature-description">
+                            Información detallada de países, capitales, banderas y datos demográficos.
+                        </p>
+                        <div class="feature-stats">250+ países</div>
+                    </div>
+
+                    <div class="feature-card" onclick="showSection('weather')">
+                        <div class="feature-icon">🌤️</div>
+                        <h3 class="feature-title">Información del Clima</h3>
+                        <p class="feature-description">
+                            Datos meteorológicos en tiempo real de ciudades chilenas.
+                        </p>
+                        <div class="feature-stats">Tiempo real</div>
+                    </div>
+
+                    <div class="feature-card" onclick="showSection('videogames')">
+                        <div class="feature-icon">🎮</div>
+                        <h3 class="feature-title">Videojuegos</h3>
+                        <p class="feature-description">
+                            Catálogo actualizado de videojuegos con ratings y información detallada.
+                        </p>
+                        <div class="feature-stats">Miles de juegos</div>
+                    </div>
+
+                    <div class="feature-card" onclick="showSection('football')">
+                        <div class="feature-icon">⚽</div>
+                        <h3 class="feature-title">Fútbol en Vivo</h3>
+                        <p class="feature-description">
+                            Partidos de fútbol en tiempo real con resultados y estadísticas.
+                        </p>
+                        <div class="feature-stats">En vivo</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="about-section">
+                <div class="about-content">
+                    <h2 class="section-title">Sobre InfoMóvil</h2>
+                    <p class="about-text">
+                        InfoMóvil es una aplicación web desarrollada con tecnologías modernas, 
+                        diseñada específicamente para dispositivos móviles. Utilizamos múltiples 
+                        APIs para brindarle información actualizada y confiable.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-item">HTML5</span>
+                        <span class="tech-item">CSS3</span>
+                        <span class="tech-item">JavaScript</span>
+                        <span class="tech-item">APIs REST</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
         <!-- Vista principal con todas las secciones -->
-        <div id="home-view" class="view active">
+        <div id="home-view" class="view">
             <section id="countries-section" class="mb-8">
                 <h2 class="text-2xl font-bold mb-4">Países del Mundo</h2>
                 <div id="countries-container" class="grid grid-cols-1 gap-4"></div>
