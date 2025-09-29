@@ -214,7 +214,8 @@ const getWeather = async(fullLoad = false) => {
     container.innerHTML = '<p class="text-center col-span-full loading">Cargando clima...</p>';
 
     try {
-        const cities = ['Coquimbo', 'Santiago', 'Valparaiso', 'Antofagasta', 'Temuco'];
+        const cities = ['Arica', 'Iquique', 'Antofagasta', 'Coquimbo', 'Valparaiso', 'Santiago', 'Concepción', 'Temuco'];
+
         const weatherPromises = cities.map(city => 
             fetch(`${API_CONFIG.weather.url}?q=${city}&appid=${API_CONFIG.weather.key}&units=metric&lang=es`)
                 .then(res => res.json())
